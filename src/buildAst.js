@@ -7,6 +7,7 @@ const {
   get,
   keys,
   union,
+  sortBy,
 } = lodash;
 /**
  * Возвращает объект с описанием свойств
@@ -26,7 +27,7 @@ const makeNode = (name, type, beforeValue, afterValue, children) => ({
 
 const getBuildAst = (object1, object2) => {
   const commonKeys = union(keys(object1), keys(object2));
-  return commonKeys.toSorted().map((name) => {
+  return sortBy(commonKeys).map((name) => {
     const beforeValue = object1[name];
     const afterValue = object2[name];
 
